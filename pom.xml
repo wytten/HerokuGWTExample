@@ -15,7 +15,11 @@
   <properties>
     <!-- Convenience property to set the GWT version -->
     <gwtVersion>2.4.0</gwtVersion>
-    <!-- GWT needs at least java 1.5 -->
+	<gwt.enableAssertions>true</gwt.enableAssertions>
+	<gwt.draftCompile>false</gwt.draftCompile>
+	<gwt.extraJvmArgs>-Xmx768M</gwt.extraJvmArgs>
+	<gwt.style>PRETTY</gwt.style>
+	<gwt.strict>false</gwt.strict>
     <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
@@ -72,7 +76,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>gwt-maven-plugin</artifactId>
-        <version>2.4.0</version>
+        <version>${gwtVersion}</version>
         <executions>
           <execution>
             <goals>
@@ -89,6 +93,11 @@
           <runTarget>herokuGWTMavenSample.html</runTarget>
           <hostedWebapp>${webappDirectory}</hostedWebapp>
           <i18nMessagesBundle>com.jsimone.client.Messages</i18nMessagesBundle>
+		  <enableAssertions>${gwt.enableAssertions}</enableAssertions>
+		  <draftCompile>${gwt.draftCompile}</draftCompile>
+		  <extraJvmArgs>${gwt.extraJvmArgs}</extraJvmArgs>
+		  <style>${gwt.style}</style>
+		  <strict>${gwt.strict}</strict>
         </configuration>
       </plugin>
 
@@ -114,8 +123,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>2.3.2</version>
         <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
+          <source>1.7</source>
+          <target>1.7</target>
         </configuration>
       </plugin>
       <plugin>
