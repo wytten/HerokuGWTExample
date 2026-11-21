@@ -14,7 +14,8 @@
 
   <properties>
     <!-- Convenience property to set the GWT version -->
-    <gwtVersion>2.4.0</gwtVersion>
+    <gwtVersion>2.13.1</gwtVersion>
+    <gwtMavenPluginVersion>2.10.0</gwtMavenPluginVersion>
 	<gwt.enableAssertions>true</gwt.enableAssertions>
 	<gwt.draftCompile>false</gwt.draftCompile>
 	<gwt.extraJvmArgs>-Xmx768M</gwt.extraJvmArgs>
@@ -24,24 +25,22 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
-<repositories>
-  <repository>
-    <id>webapp-runner-repo</id>
-    <name>webapp runner repository on GitHub</name>
-    <url>http://jsimone.github.com/webapp-runner/repository/</url>
-  </repository>
-</repositories>
-
   <dependencies>
     <dependency>
-      <groupId>com.google.gwt</groupId>
+      <groupId>org.gwtproject</groupId>
       <artifactId>gwt-servlet</artifactId>
       <version>${gwtVersion}</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
-      <groupId>com.google.gwt</groupId>
+      <groupId>org.gwtproject</groupId>
       <artifactId>gwt-user</artifactId>
+      <version>${gwtVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.gwtproject</groupId>
+      <artifactId>gwt-dev</artifactId>
       <version>${gwtVersion}</version>
       <scope>provided</scope>
     </dependency>
@@ -76,7 +75,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>gwt-maven-plugin</artifactId>
-        <version>${gwtVersion}</version>
+        <version>${gwtMavenPluginVersion}</version>
         <executions>
           <execution>
             <goals>
@@ -105,7 +104,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
-        <version>2.1.1</version>
+        <version>3.4.0</version>
         <executions>
           <execution>
             <phase>compile</phase>
@@ -121,7 +120,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-		<version>3.14.1</version>
+        <version>3.14.1</version>
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
@@ -130,7 +129,7 @@
       <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-dependency-plugin</artifactId>
-          <version>2.3</version>
+          <version>3.9.0</version>
           <executions>
               <execution>
                   <phase>package</phase>
@@ -138,9 +137,9 @@
                   <configuration>
                       <artifactItems>
                           <artifactItem>
-                              <groupId>webapp.runner</groupId>
+                              <groupId>com.heroku</groupId>
                               <artifactId>webapp-runner</artifactId>
-                              <version>0.0.6</version>
+                              <version>9.0.123.0</version>
                               <destFileName>webapp-runner.jar</destFileName>
                           </artifactItem>
                       </artifactItems>
