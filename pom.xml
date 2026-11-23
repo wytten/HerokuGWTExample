@@ -18,7 +18,7 @@
     <gwtMavenPluginVersion>2.10.0</gwtMavenPluginVersion>
 	<gwt.enableAssertions>true</gwt.enableAssertions>
 	<gwt.draftCompile>false</gwt.draftCompile>
-	<gwt.extraJvmArgs>-Xmx768M</gwt.extraJvmArgs>
+	<gwt.extraJvmArgs>-Xmx768M --add-opens java.base/java.lang=ALL-UNNAMED</gwt.extraJvmArgs>
 	<gwt.style>PRETTY</gwt.style>
 	<gwt.strict>false</gwt.strict>
     <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
